@@ -19,7 +19,7 @@ public class CannonBallMove : MonoBehaviour {
 
 		if (other.gameObject.tag == "Enemy") {
 			StartCoroutine (CannonBallHit());
-			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (50);
+			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (50,10);
 		}
 
 	}

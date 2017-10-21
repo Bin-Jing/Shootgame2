@@ -15,8 +15,7 @@ public class EnemyHealth : MonoBehaviour {
 	bool isSinking;
 	bool gettingHit = false;
 
-	void Awake ()
-	{
+	void Awake (){
 		_animator = GetComponent <Animator> ();
 
 		currentHealth = startingHealth;
@@ -28,15 +27,16 @@ public class EnemyHealth : MonoBehaviour {
 			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
 		}
 		_animator.SetBool ("GetHit", gettingHit);
-
 		gettingHit = false;
+
+
 	}
 
 	//the function must public ,because it will be call by animation event and you need to set it by yourself
 	public void StartSinking (){
 		GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = false;
 		GetComponent <Rigidbody> ().isKinematic = true;
-		isSinking = true;;
+		isSinking = true;
 		Destroy (gameObject, 2f);
 	}
 
@@ -47,14 +47,14 @@ public class EnemyHealth : MonoBehaviour {
 		_animator.SetTrigger ("Dead");
 
 	}
-	public void applyDamage(int damage){
+	public void applyDamage(int damage,float hitback){
 		if(isDead)
 			return;
 		gettingHit = true;
 		currentHealth -= damage;
-
-		if(currentHealth <= 0)
-		{
+		transform.position -= new Vector3 (hitback, 0, 0);
+		_animator.SetTrigger("Respawn");
+		if(currentHealth <= 0){
 			Death ();
 		}
 	}

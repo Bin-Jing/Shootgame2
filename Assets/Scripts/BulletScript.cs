@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour {
 	public GameObject FireLight;
 
 	float coldtime = 1;
+	bool isFire = false;
 	// Use this for initialization
 	void Start () {
 
@@ -16,12 +17,17 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		coldtime += Time.deltaTime;
-		if (Input.GetButtonDown ("Fire2") && coldtime > 0.05) {
-			
-			Destroy(Instantiate (Bullet, this.transform.position, this.transform.rotation),5);
-			Destroy(Instantiate (FireLight, this.transform.position, this.transform.rotation),1f);
+		if (Input.GetButtonDown ("Fire2") && coldtime > 0.01) {
+			isFire = true;
 			coldtime = 0;
 
+		}
+		if (Input.GetButtonUp ("Fire2")) {
+			isFire = false;
+		}
+		if (isFire) {
+			Destroy(Instantiate (Bullet, this.transform.position, this.transform.rotation),2);
+			Destroy(Instantiate (FireLight, this.transform.position, this.transform.rotation),1f);
 		}
 	}
 }
