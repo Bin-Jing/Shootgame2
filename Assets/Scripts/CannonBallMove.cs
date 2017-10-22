@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CannonBallMove : MonoBehaviour {
 	public float speed = 10f;
-
+	public float hitback = 10f;
 	public GameObject Boom;
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,8 @@ public class CannonBallMove : MonoBehaviour {
 
 		if (other.gameObject.tag == "Enemy") {
 			StartCoroutine (CannonBallHit());
-			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (50,10);
+			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (50);
+			other.transform.position -= other.transform.forward*hitback;
 		}
 
 	}

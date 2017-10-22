@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletMove : MonoBehaviour {
 
 	public float speed = 10f;
-
+	public float hitback = 1f;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +19,8 @@ public class BulletMove : MonoBehaviour {
 		
 		if (other.gameObject.tag == "Enemy") {
 			StartCoroutine (BulletHit());
-			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (10,1);
+			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (10);
+			other.transform.position -= other.transform.forward*hitback;
 		}
 
 	}

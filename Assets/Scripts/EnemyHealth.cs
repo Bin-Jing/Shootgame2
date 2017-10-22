@@ -47,12 +47,11 @@ public class EnemyHealth : MonoBehaviour {
 		_animator.SetTrigger ("Dead");
 
 	}
-	public void applyDamage(int damage,float hitback){
+	public void applyDamage(int damage){
 		if(isDead)
 			return;
 		gettingHit = true;
 		currentHealth -= damage;
-		transform.position -= new Vector3 (hitback, 0, 0);
 		_animator.SetTrigger("Respawn");
 		if(currentHealth <= 0){
 			Death ();

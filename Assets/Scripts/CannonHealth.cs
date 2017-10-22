@@ -7,7 +7,7 @@ public class CannonHealth : MonoBehaviour {
 
 	public int startingHealth = 100;
 	public int currentHealth;
-	public GameObject Boom;
+	public GameObject DeadExplosion;
 	public Slider healthSlider;
 	public Image damageImage;
 	public float flashSpeed = 5f;
@@ -24,7 +24,7 @@ public class CannonHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentHealth <= 0) {
-			Instantiate (Boom, this.transform.position, this.transform.rotation);
+			Instantiate (DeadExplosion, this.transform.position, this.transform.rotation);
 			Destroy (this.gameObject,2);
 		}
 		if(damaged){
