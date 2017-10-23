@@ -8,7 +8,6 @@ public class BulletMove : MonoBehaviour {
 	public float hitback = 1f;
 	// Use this for initialization
 	void Start () {
-		
 	}
 
 	// Update is called once per frame
@@ -21,6 +20,7 @@ public class BulletMove : MonoBehaviour {
 			StartCoroutine (BulletHit());
 			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (10);
 			other.transform.position -= other.transform.forward*hitback;
+
 		}
 
 	}

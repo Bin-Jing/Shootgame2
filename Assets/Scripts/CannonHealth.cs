@@ -12,20 +12,24 @@ public class CannonHealth : MonoBehaviour {
 	public Image damageImage;
 	public float flashSpeed = 5f;
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+	public AudioClip deathClip;
+
+	AudioSource audioSource;
 
 	bool isDead;
 	bool damaged = false;
+
 	// Use this for initialization
 	void Start () {
-		
+		audioSource = GetComponent<AudioSource> ();
 		currentHealth = startingHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (currentHealth <= 0) {
-			Instantiate (DeadExplosion, this.transform.position, this.transform.rotation);
-			Destroy (this.gameObject,2);
+			audioSource.PlayOneShot (deathClip);
+			StartCoroutine (KillPlayer());
 		}
 		if(damaged){
 			damageImage.color = flashColour;
@@ -39,5 +43,13 @@ public class CannonHealth : MonoBehaviour {
 		damaged = true;
 		currentHealth -= damage;
 		healthSlider.value = currentHealth;
+	}
+	IEnumerator KillPlayer(){
+		Instantiate (DeadExplosion, this.transform.position, this.transform.rotation);
+
+		yield return new WaitForSeconds(2.0f);
+
+		Application.LoadLevel(2);
+		Destroy (this.gameObject,2);
 	}
 }

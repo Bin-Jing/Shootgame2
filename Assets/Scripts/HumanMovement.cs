@@ -9,14 +9,15 @@ public class HumanMovement : MonoBehaviour {
 	EnemyHealth enemyHealth;
 	CannonHealth playerHealth;
 	Animator _animator;
-
+	AudioSource audioSource;
 
 	bool isRunning = true;
 	bool isAttacking = false;
-	float timer = 1f;
+	float timer = 0f;
 
+	public AudioClip shootAudio;
 	public float stopDistance = 20f;
-	public int damage = 1	;
+	public int damage = 1;
 
 	void Awake (){
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -25,6 +26,7 @@ public class HumanMovement : MonoBehaviour {
 		_animator = GetComponent<Animator> ();
 		playerHealth = player.GetComponent<CannonHealth> ();
 		laserShotLine = GetComponentInChildren<LineRenderer> ();
+		audioSource = GetComponent<AudioSource> ();
 
 		laserShotLine.enabled = false;
 	}
@@ -72,6 +74,7 @@ public class HumanMovement : MonoBehaviour {
 
 	}
 	void ShotEffect(){
+		audioSource.PlayOneShot (shootAudio);
 		laserShotLine.SetPosition (0, laserShotLine.transform.position);
 		laserShotLine.SetPosition (1, player.position + Vector3.up * 1.5f);
 		laserShotLine.enabled = true;

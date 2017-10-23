@@ -9,7 +9,12 @@ public class EnemyHealth : MonoBehaviour {
 	public int scoreValue = 10;
 	public float sinkSpeed = 2.5f;
 
+	public AudioClip[] deathAudio;
+
+	AudioSource audioSource;
+	AudioClip deathClip;
 	Animator _animator;
+
 
 	bool isDead;
 	bool isSinking;
@@ -19,6 +24,7 @@ public class EnemyHealth : MonoBehaviour {
 		_animator = GetComponent <Animator> ();
 
 		currentHealth = startingHealth;
+		audioSource = gameObject.GetComponent<AudioSource> ();
 	}
 
 
@@ -40,11 +46,17 @@ public class EnemyHealth : MonoBehaviour {
 		Destroy (gameObject, 2f);
 	}
 
-	void Death ()
-	{
+	void Death (){
 		isDead = true;
 
 		_animator.SetTrigger ("Dead");
+
+		GameObject.Find ("GameManager").GetComponent<GameManager> ().addScore (scoreValue);
+		int index = Random.Range (0, deathAudio.Length);
+		deathClip = deathAudio [index];
+		audioSource.clip = deathClip;
+		audioSource.Play ();
+
 
 	}
 	public void applyDamage(int damage){

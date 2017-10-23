@@ -8,7 +8,6 @@ public class CannonBallMove : MonoBehaviour {
 	public GameObject Boom;
 	// Use this for initialization
 	void Start () {
-		
 	}
 
 	// Update is called once per frame
@@ -21,6 +20,7 @@ public class CannonBallMove : MonoBehaviour {
 			StartCoroutine (CannonBallHit());
 			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (50);
 			other.transform.position -= other.transform.forward*hitback;
+
 		}
 
 	}

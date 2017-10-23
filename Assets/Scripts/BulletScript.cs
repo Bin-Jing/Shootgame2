@@ -6,12 +6,13 @@ public class BulletScript : MonoBehaviour {
 
 	public GameObject Bullet;
 	public GameObject FireLight;
+	AudioSource FireAudio;
 
 	float coldtime = 1;
 	bool isFire = false;
 	// Use this for initialization
 	void Start () {
-
+		FireAudio = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -26,8 +27,9 @@ public class BulletScript : MonoBehaviour {
 			isFire = false;
 		}
 		if (isFire) {
-			Destroy(Instantiate (Bullet, this.transform.position, this.transform.rotation),2);
+			Destroy(Instantiate (Bullet, this.transform.position, this.transform.rotation),1);
 			Destroy(Instantiate (FireLight, this.transform.position, this.transform.rotation),1f);
+			FireAudio.Play ();
 		}
 	}
 }
