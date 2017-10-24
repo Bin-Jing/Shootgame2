@@ -47,7 +47,7 @@ public class CannonHealth : MonoBehaviour {
 	IEnumerator KillPlayer(){
 		Instantiate (DeadExplosion, this.transform.position, this.transform.rotation);
 
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(5.0f);
 
 		Application.LoadLevel(2);
 		Destroy (this.gameObject,2);

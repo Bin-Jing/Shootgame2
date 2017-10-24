@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour {
 	
-	public int startingHealth = 100;
-	public int currentHealth;
+	public float startingHealth = 100;
+	public float currentHealth;
 	public int scoreValue = 10;
 	public float sinkSpeed = 2.5f;
+	public Image healthBar;
 
 	public AudioClip[] deathAudio;
 
@@ -64,6 +66,7 @@ public class EnemyHealth : MonoBehaviour {
 			return;
 		gettingHit = true;
 		currentHealth -= damage;
+		healthBar.fillAmount = currentHealth / startingHealth;
 		_animator.SetTrigger("Respawn");
 		if(currentHealth <= 0){
 			Death ();

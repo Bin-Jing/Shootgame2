@@ -7,18 +7,22 @@ public class BulletScript : MonoBehaviour {
 	public GameObject Bullet;
 	public GameObject FireLight;
 	AudioSource FireAudio;
+	CannonHealth playerHealth;
+	GameObject player;
 
 	float coldtime = 1;
 	bool isFire = false;
 	// Use this for initialization
 	void Start () {
+		player = GameObject.FindGameObjectWithTag ("Player");
 		FireAudio = GetComponent<AudioSource> ();
+		playerHealth = player.GetComponent <CannonHealth> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		coldtime += Time.deltaTime;
-		if (Input.GetButtonDown ("Fire2") && coldtime > 0.01) {
+		if (Input.GetButtonDown ("Fire2") && coldtime > 0.01 && playerHealth.currentHealth > 0) {
 			isFire = true;
 			coldtime = 0;
 
