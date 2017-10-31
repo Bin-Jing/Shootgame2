@@ -513,8 +513,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "About SuperCannon\n\n\nProducer\uFF1ABING-JIN HSIEH\nGameSource : Unity
-    Asset Store"
+  m_Text: "About SuperCannon\n\n\nProducer\uFF1ABING-JIN HSIEH\nGameSource : \nUnity
+    Asset Store\nhttps://opengameart.org"
 --- !u!222 &2017375282
 CanvasRenderer:
   m_ObjectHideFlags: 0

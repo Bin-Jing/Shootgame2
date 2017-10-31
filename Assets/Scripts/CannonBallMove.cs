@@ -21,6 +21,11 @@ public class CannonBallMove : MonoBehaviour {
 			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (50);
 			other.transform.position -= other.transform.forward*hitback;
 
+		}else if(other.gameObject.tag == "UFO") {
+			StartCoroutine (CannonBallHit());
+			other.gameObject.GetComponent<UFOScript> ().applyDamage (50);
+			other.transform.position -= other.transform.forward*hitback;
+
 		}
 
 	}

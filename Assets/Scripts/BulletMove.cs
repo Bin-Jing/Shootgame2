@@ -21,6 +21,10 @@ public class BulletMove : MonoBehaviour {
 			other.gameObject.GetComponent<EnemyHealth> ().applyDamage (10);
 			other.transform.position -= other.transform.forward*hitback;
 
+		}else if(other.gameObject.tag == "UFO") {
+			StartCoroutine (BulletHit());
+			other.gameObject.GetComponent<UFOScript> ().applyDamage (1);
+
 		}
 
 	}
