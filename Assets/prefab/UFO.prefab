@@ -411,7 +411,7 @@ MonoBehaviour:
     type: 2}
   deathAudio:
   - {fileID: 8300000, guid: 679e8409d96984f64808c5c9c8f00fa8, type: 3}
-  stopDistance: 20
+  stopDistance: 30
   damage: 1
   shootAudio: {fileID: 8300000, guid: 6d2b813619ec644b089f589e54d84f71, type: 3}
 --- !u!114 &114638162813045874
@@ -442,8 +442,8 @@ LineRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906592796395658}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -472,7 +472,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -546,7 +546,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 20
+  m_StoppingDistance: 30
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

@@ -16,7 +16,7 @@ public class CannonScripts : MonoBehaviour {
 		Vector3 CannonRotation = transform.eulerAngles;
 		CannonRotation.z += v;
 		CannonRotation.y += h;
-		CannonRotation.z = Mathf.Clamp(CannonRotation.z, 0, 80);
+		CannonRotation.z = Mathf.Clamp(CannonRotation.z, 0, 45);
 		transform.rotation = Quaternion.Euler(CannonRotation);	
 	}
 }
